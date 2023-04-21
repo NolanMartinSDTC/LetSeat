@@ -1,0 +1,33 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model IEnumerable<Favorite>
+
+<h2>Favorites</h2>
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Cuisine Type</th>
+        <th>Address</th>
+        <th>City</th>
+        <th>State</th>
+    </tr>
+
+    @foreach (var favorite in @Model)
+    {
+        <tr>
+            <td>@favorite.ID</td>
+            @*<td>@favorite.Name</td>*@
+            <td><a href=/Favorite/ViewFavorite/@favorite.Name>@favorite.Name</a></td>
+            <td>@favorite.CuisineType</td>
+            <td>@favorite.Address</td>
+            <td>@favorite.City</td>
+            <td>@favorite.State</td>
+
+        </tr>
+    }
+
+</table>

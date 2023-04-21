@@ -1,0 +1,36 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model Favorite
+
+<h3>@Model.Name Information</h3>
+
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Cuisine Type</th>
+        <th>Address</th>
+        <th>City</th>
+        <th>State</th>
+    </tr>
+    <tr>
+        <td>@Model.ID</td>
+        <td>@Model.Name</td>
+        <td>@Model.CuisineType</td>
+        <td>@Model.Address</td>
+        <td>@Model.City</td>
+        <td>@Model.State</td>
+    </tr>
+</table>
+
+<div style="display: block">
+
+    @using (Html.BeginForm("DeleteFavorite", "Favorite", "Post"))
+    {
+        <input type="hidden" asp-for="ID" value="@Model.ID" />
+        <input type="submit" onclick="return confirm('Are you sure?')" value="Delete from favorites" />
+    }
+</div>
