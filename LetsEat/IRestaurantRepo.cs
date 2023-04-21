@@ -6,7 +6,8 @@ namespace LetsEat
 	public interface IRestaurantRepo
 	{
 		public IEnumerable<Restaurant> GetAllRestaurants();
-		public Restaurant GetRestaurant(int id);
+		public Restaurant GetRestaurant(int zipCode);
+		public void InsertRestaurant(Restaurant restaurantToInsert);
 
 	}
 }

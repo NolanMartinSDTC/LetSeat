@@ -18,9 +18,9 @@ namespace LetsEat.Controllers
             this.repo = repo;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int zipCode)
         {
-            var restaurants = repo.GetAllRestaurants();
+            var restaurants = repo.GetRestaurant(zipCode);
             return View(restaurants);
         }
 
