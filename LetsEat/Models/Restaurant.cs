@@ -8,6 +8,10 @@ namespace LetsEat.Models
 		{
 		}
 
+		public string APIResponse { get; set; }
+		public string SeeMore { get; set; }
+		public string Done { get; set; }
+
 		public int ID { get; set; }
 		public string Name { get; set; }
 		public string CuisineType { get; set; }

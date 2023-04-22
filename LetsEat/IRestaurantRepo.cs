@@ -5,10 +5,12 @@ namespace LetsEat
 {
 	public interface IRestaurantRepo
 	{
+        public Restaurant GetAPIResponse(string zipCode);
 		public IEnumerable<Restaurant> GetAllRestaurants();
-		public Restaurant GetRestaurant(int zipCode);
-		public void InsertRestaurant(Restaurant restaurantToInsert);
+        //public Restaurant Restaurant(int zipCode);
+        //public void InsertRestaurant(Restaurant restaurantToInsert);
 
-	}
+
+    }
 }
 

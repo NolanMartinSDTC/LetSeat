@@ -3,9 +3,34 @@
 *@
 @{
 }
-@model IEnumerable<Restaurant>
+@model Restaurant
 
 <h2>Restaurants</h2>
+
+@*<div style="display: block">
+        <a href="/Restaurant/InsertRestaurant/">Generate Restaurants in your Zipcode</a>
+    </div>*@
+
+<div class="text-center">
+    <h1 class="display-4">Generate Restaurants</h1>
+    <p>Enter your zipcode below to get restaurants in your area.</p>
+</div>
+
+
+<div style="width: 20%; margin: 0 auto" class="text-center">
+    <div class="form-row align-items-center">
+        @using (Html.BeginForm("Index", "Restaurant", FormMethod.Get))
+        {
+            <div class="form-group">
+                <input type="text" name="zipCode" class="form-control text-center" maxlength="5" />
+            </div>
+            <br />
+
+            <input type="submit" value="Enter" class="btn btn-primary" />
+        }
+    </div>
+</div>
+
 <table class="table">
     <tr>
         <th>ID</th>
@@ -14,22 +39,32 @@
         <th>Address</th>
         <th>City</th>
         <th>State</th>
-        <th>Saved To Favorites</th>
+        @*<th>Saved To Favorites</th>*@
     </tr>
 
-    @foreach (var restaurant in @Model)
-    {
+    @*@foreach (var restaurant in @Model)
+    {*@
         <tr>
-            <td>@restaurant.ID</td>
-            @*<td>@restaurant.Name</td>*@
-            <td><a href=/Restaurant/ViewRestaurant/@restaurant.Name>@restaurant.Name</a></td>
-            <td>@restaurant.CuisineType</td>
-            <td>@restaurant.Address</td>
-            <td>@restaurant.City</td>
-            <td>@restaurant.State</td>
-            <td>@restaurant.Favorite</td>
+            <td>@Model.ID</td>
+            <td>@Model.Name</td>
+            <td>@Model.CuisineType</td>
+            <td>@Model.Address</td>
+            <td>@Model.City</td>
+            <td>@Model.State</td>
 
         </tr>
-    }
+    @*}*@
 
 </table>
+
+<div style="width: 20%; margin: 0 auto" class="text-center">
+
+    <div>
+        <input type="button" value="See More Restaurants" onclick="Restaurant" />
+    </div>
+    <p></p>
+    <div>
+        <button onclick="Restaurant">See More Restaurants</button>
+        <input type="button" value="Done" onclick=""='@Url.Action("Index", "Home")'" />
+    </div>
+</div>

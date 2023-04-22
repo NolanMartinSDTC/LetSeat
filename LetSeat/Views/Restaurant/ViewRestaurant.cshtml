@@ -5,7 +5,7 @@
 }
 @model Restaurant
 
-<h3>@Model.Name Information</h3>
+<h3>Restaurants</h3>
 
 <table class="table">
     <tr>
@@ -15,15 +15,17 @@
         <th>Address</th>
         <th>City</th>
         <th>State</th>
-        <th>In Favorites?</th>
     </tr>
-    <tr>
+
+    
+    {<tr>
+
         <td>@Model.ID</td>
         <td>@Model.Name</td>
         <td>@Model.CuisineType</td>
         <td>@Model.Address</td>
         <td>@Model.City</td>
         <td>@Model.State</td>
-        <td>@Model.Favorite</td>
     </tr>
+     }
 </table>
