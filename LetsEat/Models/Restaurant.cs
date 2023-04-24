@@ -18,7 +18,7 @@ namespace LetsEat.Models
 		public string Address { get; set; }
 		public string City { get; set; }
 		public string State { get; set; }
-		public bool Favorite { get; set; }
+		public bool InFavorite { get; set; }
 	}
 }
 

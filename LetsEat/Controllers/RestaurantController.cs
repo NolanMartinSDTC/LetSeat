@@ -21,33 +21,35 @@ namespace LetsEat.Controllers
 
         public IActionResult Index(string zipCode)
         {
-            var restaurant = new Restaurant();
+            var restaurantList = new List<Restaurant>();
 
             if (zipCode == null)
             {
-                return View(restaurant);
+                return View(restaurantList);
             }
             try
             {
-                restaurant = repo.GetAPIResponse(zipCode);
+                restaurantList = repo.GetAPIResponse(zipCode);
             }
             catch (AggregateException)
             {
                 return RedirectToAction("Index", "Restaurant");
             }
-            return View(restaurant);
+            return View(restaurantList);
         }
 
-        public IActionResult Restaurant(string zipCode)
+        public IActionResult ViewRestaurant (string name)
         {
             var restaurant = new Restaurant();
-
-            if (zipCode == null)
+            try
             {
-                return View(restaurant);
+                restaurant = repo.GetRestaurant(name);
+            }
+            catch (AggregateException)
+            {
+                return RedirectToAction("Index", "Restaurant");
             }
 
-            restaurant = repo.GetAPIResponse(zipCode);
             return View(restaurant);
         }
     }

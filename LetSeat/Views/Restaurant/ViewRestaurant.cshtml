@@ -5,7 +5,7 @@
 }
 @model Restaurant
 
-<h3>Restaurants</h3>
+<h3>Restaurant Information</h3>
 
 <table class="table">
     <tr>
@@ -18,14 +18,15 @@
     </tr>
 
     
-    {<tr>
-
-        <td>@Model.ID</td>
-        <td>@Model.Name</td>
-        <td>@Model.CuisineType</td>
-        <td>@Model.Address</td>
-        <td>@Model.City</td>
-        <td>@Model.State</td>
-    </tr>
-     }
+    @*@foreach(var restaurant in Model)
+     {*@
+        <tr>
+            <td>@Model.ID</td>
+            <td>@Model.Name</td>
+            <td>@Model.CuisineType</td>
+            <td>@Model.Address</td>
+            <td>@Model.City</td>
+            <td>@Model.State</td>
+        </tr>
+     @*}*@
 </table>
