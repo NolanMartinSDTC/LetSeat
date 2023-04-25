@@ -1,6 +1,6 @@
-CREATE SCHEMA `letseatpublic` ;
+CREATE SCHEMA `letseat` ;
 
-CREATE TABLE `letseatpublic`.`restaurants` (
+CREATE TABLE `letseat`.`restaurants` (
   `restID` INT NOT NULL,
   `Name` VARCHAR(45) NULL DEFAULT NULL,
   `CuisineType` VARCHAR(45) NULL DEFAULT NULL,
@@ -10,7 +10,7 @@ CREATE TABLE `letseatpublic`.`restaurants` (
   PRIMARY KEY (`restID`),
   UNIQUE INDEX `restID_UNIQUE` (`restID` ASC) VISIBLE);
   
-  CREATE TABLE `letseatpublic`.`favorites` (
+  CREATE TABLE `letseat`.`favorites` (
   `restID` INT NOT NULL,
   `Name` VARCHAR(45) NULL DEFAULT NULL,
   `CuisineType` VARCHAR(45) NULL DEFAULT NULL,
