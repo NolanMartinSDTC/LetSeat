@@ -28,7 +28,7 @@ namespace LetsEat
         {
             var restaurant = new Restaurant();
             var client = new HttpClient();
-
+            
             string key = File.ReadAllText("appsettings.json");
             string APIKey = JObject.Parse(key).GetValue("DefaultKey").ToString();
             client.DefaultRequestHeaders.Add("X-RapidAPI-Key", APIKey);
