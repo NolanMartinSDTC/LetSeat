@@ -7,7 +7,7 @@ namespace LetsEat
 	{
 		public IEnumerable<Restaurant> GetAllFavorites();
 		public Restaurant GetRestaurant(long id);
-		public void DeleteFavorite(Restaurant favorite);
+		public void DeleteFavorite(long id);
 		public void InsertFavorite(Restaurant restaurant);
     }
 }

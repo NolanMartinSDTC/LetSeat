@@ -15,9 +15,9 @@ namespace LetsEat
             _conn = conn;
         }
 
-        public void DeleteFavorite(Restaurant favorite)
+        public void DeleteFavorite(long id)
         {
-            _conn.Execute("DELETE FROM FAVORITES WHERE restID = @id;", new { id = favorite.RestID });
+            _conn.Execute("DELETE FROM FAVORITES WHERE restID = @id;", new { id = id });
         }
 
         public void InsertFavorite(Restaurant restaurantToInsert)

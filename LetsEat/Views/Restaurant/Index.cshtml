@@ -30,13 +30,15 @@
         <th>Address</th>
         <th>City</th>
         <th>State</th>
-        <th class="text-center">Action</th>
+        <th>Action</th>
     </tr>
 
     @foreach (var restaurant in Model)
     {
         <tr>
-            <td>@restaurant.RestID</td>
+            @*<td>@restaurant.RestID</td>*@
+            <td><a href=/Restaurant/ViewRestaurant/@restaurant.RestID>@restaurant.RestID</a></td>
+
             <td>@restaurant.Name</td>
             <td>@restaurant.CuisineType</td>
             <td>@restaurant.Address</td>

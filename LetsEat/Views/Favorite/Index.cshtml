@@ -9,6 +9,7 @@
         <th>Address</th>
         <th>City</th>
         <th>State</th>
+        <th>Action</th>
     </tr>
 
     @foreach (var favorite in @Model)
@@ -20,6 +21,7 @@
             <td>@favorite.Address</td>
             <td>@favorite.City</td>
             <td>@favorite.State</td>
+            <td><a href=/Favorite/DeleteFavorite/@favorite.RestID>Remove from Favorites</a></td>
         </tr>
     }
 </table>
