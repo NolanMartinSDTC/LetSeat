@@ -6,9 +6,9 @@ namespace LetsEat
 	public interface IFavoriteRepo
 	{
 		public IEnumerable<Favorite> GetAllFavorites();
-        public Favorite GetFavorite(int id);
-		public void DeleteFavorite(Favorite favorite);
-
+        //public Restaurant GetFavorite(string name);
+		public void DeleteFavorite(Restaurant favorite);
+		public void InsertFavorite(Restaurant restaurant);
     }
 }
 

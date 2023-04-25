@@ -19,10 +19,10 @@ namespace LetsEat
 			_conn = conn;
 		}
 
-        public IEnumerable<Restaurant> GetAllRestaurants()
-        {
-            return _conn.Query<Restaurant>("SELECT * FROM RESTAURANTS;");
-        }
+        //public IEnumerable<Restaurant> GetAllRestaurants()
+        //{
+        //    return _conn.Query<Restaurant>("SELECT * FROM RESTAURANTS;");
+        //}
 
         public List<Restaurant> GetAPIResponse(string zipCode)
         {
@@ -46,7 +46,7 @@ namespace LetsEat
                 var restaurantToAdd = new Restaurant();
                 var index = JObject.Parse(formattedResponse[i].ToString());
 
-                restaurantToAdd.ID = (int)index.GetValue("id");
+                restaurantToAdd.ID = (long)index.GetValue("id");
                 restaurantToAdd.CuisineType = (string)(index.TryGetValue("cuisineType", out JToken cuisineCheck) ? cuisineCheck : "N/A");
                 restaurantToAdd.Address = (string)index.GetValue("address");
                 restaurantToAdd.City = (string)index.GetValue("cityName");
@@ -61,16 +61,18 @@ namespace LetsEat
 
         public void InsertRestaurant(Restaurant restaurantToInsert)
         {
-            _conn.Execute("INSERT INTO restaurants (ID, NAME, CUISINE, ADDRESS, CITY, STATE) VALUES (@id, @name, @cuisineType, @address, @city, @state) " +
-                "ON DUPLICATE KEY UPDATE ID = ID;",
-                new { id = restaurantToInsert.ID, name = restaurantToInsert.Name, cuisineType = restaurantToInsert.CuisineType,
+            _conn.Execute("INSERT INTO restaurants (restID, NAME, CUISINE, ADDRESS, CITY, STATE) VALUES (@restID, @name, @cuisineType, @address, @city, @state) " +
+                "ON DUPLICATE KEY UPDATE restID = restID;",
+                new { restID = restaurantToInsert.ID, name = restaurantToInsert.Name, cuisineType = restaurantToInsert.CuisineType,
                     address = restaurantToInsert.Address, city = restaurantToInsert.City, state = restaurantToInsert.State });
         }
 
-        public Restaurant GetRestaurant(string name)
-        {
-            return _conn.QuerySingle<Restaurant>("SELECT * FROM RESTAURANTS WHERE NAME = @name", new { name = name });
-        }
+        // no elements in sequence, come back to it
+        //public Restaurant GetRestaurant(long restID)
+        //{
+        //    return _conn.QuerySingle<Restaurant>("SELECT * FROM RESTAURANTS WHERE restID = @restID;",
+        //        new { restID = restID });
+        //}
     }
 }
 

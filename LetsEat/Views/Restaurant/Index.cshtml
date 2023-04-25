@@ -1,9 +1,4 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
-@model List<Restaurant>
+﻿@model List<Restaurant>
 
 <h2>Restaurants</h2>
 
@@ -16,14 +11,14 @@
 <div style="width: 20%; margin: 0 auto" class="text-center">
     <div class="form-row align-items-center">
         @using (Html.BeginForm("Index", "Restaurant", FormMethod.Get))
-        {
+            {
             <div class="form-group">
                 <input type="text" name="zipCode" class="form-control text-center" maxlength="5" />
             </div>
             <br />
 
-            <input type="submit" value="Enter" class="btn btn-primary" />
-        }
+            <input type="submit" value="Enter" class="btn btn-primary"/>
+            }
     </div>
 </div>
 
@@ -35,25 +30,29 @@
         <th>Address</th>
         <th>City</th>
         <th>State</th>
-        @*<th>Saved To Favorites</th>*@
-        <th></th>
+        <th class="text-center">Action</th>
     </tr>
 
     @foreach (var restaurant in Model)
     {
         <tr>
             <td>@restaurant.ID</td>
-            <td><a href=/Restaurant/ViewRestaurant/@restaurant.Name>@restaurant.Name</a></td>
+            <td>@restaurant.Name</td>
             <td>@restaurant.CuisineType</td>
             <td>@restaurant.Address</td>
             <td>@restaurant.City</td>
             <td>@restaurant.State</td>
+            <td><a href=/Favorite/ViewFavorite/favorite>Add to Favorites</a></td>
+
+                
+
+                @*<td><input type="button" value="Add to Favorites" onclick="InsertFavorite()" /></td>*@
         </tr>
     }
 </table>
 
 <div style="width: 20%; margin: 0 auto" class="text-center">
     <div>
-        <input type="button" value="Done" onclick=""='@Url.Action("Index", "Home")'" />
+        <input type="button" value="Done" onclick="" ='@Url.Action("Index", "Home")' "  />
     </div>
 </div>

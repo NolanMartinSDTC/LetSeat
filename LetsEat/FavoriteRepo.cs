@@ -6,8 +6,8 @@ using Dapper;
 
 namespace LetsEat
 {
-	public class FavoriteRepo : IFavoriteRepo
-	{
+    public class FavoriteRepo : IFavoriteRepo
+    {
         private readonly IDbConnection _conn;
 
         public FavoriteRepo(IDbConnection conn)
@@ -15,20 +15,34 @@ namespace LetsEat
             _conn = conn;
         }
 
-        public void DeleteFavorite(Favorite favorite)
+        public void DeleteFavorite(Restaurant favorite)
         {
-            _conn.Execute("DELETE FROM FAVORITES WHERE ID = @id;", new { id = favorite.ID });
+            _conn.Execute("DELETE FROM FAVORITES WHERE restID = @id;", new { id = favorite.ID });
         }
 
+        public void InsertFavorite(Restaurant restaurantToInsert)
+        {
+            _conn.Execute("INSERT INTO favorites (restID, NAME, CUISINE, ADDRESS, CITY, STATE) VALUES (@id, @name, @cuisineType, @address, @city, @state) " +
+                "ON DUPLICATE KEY UPDATE restID = restID;",
+                new
+                {
+                    id = restaurantToInsert.ID,
+                    name = restaurantToInsert.Name,
+                    cuisineType = restaurantToInsert.CuisineType,
+                    address = restaurantToInsert.Address,
+                    city = restaurantToInsert.City,
+                    state = restaurantToInsert.State
+                });
+        }
         public IEnumerable<Favorite> GetAllFavorites()
         {
             return _conn.Query<Favorite>("SELECT * FROM FAVORITES;");
         }
 
-        public Favorite GetFavorite(int id)
-        {
-            throw new NotImplementedException();
-        }
-    }
+        //public Restaurant GetFavorite(string name)
+        //{
+        //    throw new NotImplementedException();
+        //}
+    }   
 }
 

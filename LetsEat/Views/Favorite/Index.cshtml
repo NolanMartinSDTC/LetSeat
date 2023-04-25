@@ -14,20 +14,27 @@
         <th>Address</th>
         <th>City</th>
         <th>State</th>
+        <th>Action</th>
     </tr>
 
     @foreach (var favorite in @Model)
     {
         <tr>
             <td>@favorite.ID</td>
-            @*<td>@favorite.Name</td>*@
-            <td><a href=/Favorite/ViewFavorite/@favorite.Name>@favorite.Name</a></td>
+            <td>@favorite.Name</td>
             <td>@favorite.CuisineType</td>
             <td>@favorite.Address</td>
             <td>@favorite.City</td>
             <td>@favorite.State</td>
-
+            <td>Action</td>
+            @*<td><input type="button" value="Remove from Favorites" id="restaurantToRemove" onclick="DeleteFavorite(restaurantToRemove)" /></td>
+        </tr>*@
         </tr>
     }
-
 </table>
+
+<div style="width: 20%; margin: 0 auto" class="text-center">
+    <div>
+        <input type="button" value="Return to Home" onclick ="@Url.Action("Index", "Home")"/>
+    </div>
+</div>

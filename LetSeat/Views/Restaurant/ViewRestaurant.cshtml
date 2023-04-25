@@ -15,18 +15,17 @@
         <th>Address</th>
         <th>City</th>
         <th>State</th>
+        <th>Action</th>
     </tr>
 
-    
-    @*@foreach(var restaurant in Model)
-     {*@
-        <tr>
-            <td>@Model.ID</td>
-            <td>@Model.Name</td>
-            <td>@Model.CuisineType</td>
-            <td>@Model.Address</td>
-            <td>@Model.City</td>
-            <td>@Model.State</td>
-        </tr>
-     @*}*@
+    <tr>
+        <td>@Model.ID</td>
+        <td>@Model.Name</td>
+        <td>@Model.CuisineType</td>
+        <td>@Model.Address</td>
+        <td>@Model.City</td>
+        <td>@Model.State</td>
+        @*<td><input type="button" value="Add to Favorites" id="restaurantToInsert" onclick="InsertFavorite(restaurantToInsert)" /></td>*@
+
+    </tr>
 </table>

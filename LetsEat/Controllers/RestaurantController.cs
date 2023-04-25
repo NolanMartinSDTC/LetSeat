@@ -29,7 +29,7 @@ namespace LetsEat.Controllers
             }
             try
             {
-                restaurantList = repo.GetAPIResponse(zipCode);
+                restaurantList = repo.GetAPIResponse(zipCode).ToList();
             }
             catch (AggregateException)
             {
@@ -38,20 +38,21 @@ namespace LetsEat.Controllers
             return View(restaurantList);
         }
 
-        public IActionResult ViewRestaurant (string name)
-        {
-            var restaurant = new Restaurant();
-            try
-            {
-                restaurant = repo.GetRestaurant(name);
-            }
-            catch (AggregateException)
-            {
-                return RedirectToAction("Index", "Restaurant");
-            }
+        // no elements in sequence, come back to it
+        //public IActionResult ViewRestaurant(long restID)
+        //{
+        //    var restaurant = new Restaurant();
+        //    try
+        //    {
+        //        restaurant = repo.GetRestaurant(restID);
+        //    }
+        //    catch (AggregateException)
+        //    {
+        //        return RedirectToAction("Index", "Restaurant");
+        //    }
 
-            return View(restaurant);
-        }
+        //    return View(restaurant);
+        //}
     }
 }
 

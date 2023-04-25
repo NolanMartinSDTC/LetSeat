@@ -5,7 +5,7 @@
 }
 @model Favorite
 
-<h3>@Model.Name Information</h3>
+<h3>Favorite Information</h3>
 
 <table class="table">
     <tr>
@@ -15,7 +15,9 @@
         <th>Address</th>
         <th>City</th>
         <th>State</th>
+        <th>Action</th>
     </tr>
+
     <tr>
         <td>@Model.ID</td>
         <td>@Model.Name</td>
@@ -26,11 +28,11 @@
     </tr>
 </table>
 
-<div style="display: block">
+@*<div style="display: block">
 
     @using (Html.BeginForm("DeleteFavorite", "Favorite", "Post"))
     {
         <input type="hidden" asp-for="ID" value="@Model.ID" />
         <input type="submit" onclick="return confirm('Are you sure?')" value="Delete from favorites" />
     }
-</div>
+</div>*@
