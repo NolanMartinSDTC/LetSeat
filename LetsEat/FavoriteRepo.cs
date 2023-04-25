@@ -17,32 +17,32 @@ namespace LetsEat
 
         public void DeleteFavorite(Restaurant favorite)
         {
-            _conn.Execute("DELETE FROM FAVORITES WHERE restID = @id;", new { id = favorite.ID });
+            _conn.Execute("DELETE FROM FAVORITES WHERE restID = @id;", new { id = favorite.RestID });
         }
 
         public void InsertFavorite(Restaurant restaurantToInsert)
         {
-            _conn.Execute("INSERT INTO favorites (restID, NAME, CUISINE, ADDRESS, CITY, STATE) VALUES (@id, @name, @cuisineType, @address, @city, @state) " +
+            _conn.Execute("INSERT INTO FAVORITES (RESTID, NAME, CUISINETYPE, ADDRESS, CITY, STATE) VALUES (@id, @name, @cuisine, @address, @city, @state) " +
                 "ON DUPLICATE KEY UPDATE restID = restID;",
                 new
                 {
-                    id = restaurantToInsert.ID,
+                    id = restaurantToInsert.RestID,
                     name = restaurantToInsert.Name,
-                    cuisineType = restaurantToInsert.CuisineType,
+                    cuisine = restaurantToInsert.CuisineType,
                     address = restaurantToInsert.Address,
                     city = restaurantToInsert.City,
                     state = restaurantToInsert.State
                 });
         }
-        public IEnumerable<Favorite> GetAllFavorites()
+        public IEnumerable<Restaurant> GetAllFavorites()
         {
-            return _conn.Query<Favorite>("SELECT * FROM FAVORITES;");
+            return _conn.Query<Restaurant>("SELECT * FROM FAVORITES;");
         }
 
-        //public Restaurant GetFavorite(string name)
-        //{
-        //    throw new NotImplementedException();
-        //}
+        public Restaurant GetRestaurant(long id)
+        {
+            return _conn.Query<Restaurant>("SELECT * FROM RESTAURANTS WHERE RESTID = @id;", new { id = id }).ToList()[0];
+        }
     }   
 }
 

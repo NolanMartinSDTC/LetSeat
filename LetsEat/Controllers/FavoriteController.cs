@@ -25,9 +25,11 @@ namespace LetsEat.Controllers
             return View(favorites);
         }
 
-        public IActionResult InsertFavorite(Restaurant restaurant)
+        public IActionResult InsertFavorite(long id)
         {
-            repo.InsertFavorite(restaurant);
+            var favorite = repo.GetRestaurant(id);
+
+            repo.InsertFavorite(favorite);
             return RedirectToAction("Index");
         }
 
@@ -37,7 +39,7 @@ namespace LetsEat.Controllers
         //    return View(favorite);
         //}
 
-        public IActionResult DeleteFavorite(Favorite favorite)
+        public IActionResult DeleteFavorite(Restaurant favorite)
         {
             repo.DeleteFavorite(favorite);
             return RedirectToAction("Index");

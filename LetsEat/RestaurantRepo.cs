@@ -46,7 +46,7 @@ namespace LetsEat
                 var restaurantToAdd = new Restaurant();
                 var index = JObject.Parse(formattedResponse[i].ToString());
 
-                restaurantToAdd.ID = (long)index.GetValue("id");
+                restaurantToAdd.RestID = (long)index.GetValue("id");
                 restaurantToAdd.CuisineType = (string)(index.TryGetValue("cuisineType", out JToken cuisineCheck) ? cuisineCheck : "N/A");
                 restaurantToAdd.Address = (string)index.GetValue("address");
                 restaurantToAdd.City = (string)index.GetValue("cityName");
@@ -61,18 +61,18 @@ namespace LetsEat
 
         public void InsertRestaurant(Restaurant restaurantToInsert)
         {
-            _conn.Execute("INSERT INTO restaurants (restID, NAME, CUISINE, ADDRESS, CITY, STATE) VALUES (@restID, @name, @cuisineType, @address, @city, @state) " +
+            _conn.Execute("INSERT INTO restaurants (restID, NAME, CUISINETYPE, ADDRESS, CITY, STATE) VALUES (@restID, @name, @cuisineType, @address, @city, @state) " +
                 "ON DUPLICATE KEY UPDATE restID = restID;",
-                new { restID = restaurantToInsert.ID, name = restaurantToInsert.Name, cuisineType = restaurantToInsert.CuisineType,
+                new { restID = restaurantToInsert.RestID, name = restaurantToInsert.Name, cuisineType = restaurantToInsert.CuisineType,
                     address = restaurantToInsert.Address, city = restaurantToInsert.City, state = restaurantToInsert.State });
         }
 
         // no elements in sequence, come back to it
-        //public Restaurant GetRestaurant(long restID)
-        //{
-        //    return _conn.QuerySingle<Restaurant>("SELECT * FROM RESTAURANTS WHERE restID = @restID;",
-        //        new { restID = restID });
-        //}
+        public Restaurant GetRestaurant(long restID)
+        {
+            return _conn.QuerySingle<Restaurant>("SELECT * FROM RESTAURANTS WHERE restID = @restID;",
+                new { restID = restID });
+        }
     }
 }
 

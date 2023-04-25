@@ -36,17 +36,13 @@
     @foreach (var restaurant in Model)
     {
         <tr>
-            <td>@restaurant.ID</td>
+            <td>@restaurant.RestID</td>
             <td>@restaurant.Name</td>
             <td>@restaurant.CuisineType</td>
             <td>@restaurant.Address</td>
             <td>@restaurant.City</td>
             <td>@restaurant.State</td>
-            <td><a href=/Favorite/ViewFavorite/@restaurant>Add to Favorites</a></td>
-
-                
-
-                @*<td><input type="button" value="Add to Favorites" onclick="InsertFavorite()" /></td>*@
+            <td><a href=/Favorite/InsertFavorite/@restaurant.RestID>Add to Favorites</a></td>
         </tr>
     }
 </table>
