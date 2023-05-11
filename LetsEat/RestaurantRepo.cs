@@ -62,12 +62,10 @@ namespace LetsEat
                     address = restaurantToInsert.Address, city = restaurantToInsert.City, state = restaurantToInsert.State });
         }
 
-        //no elements in sequence, come back to it
-        //public Restaurant GetRestaurant(long restID)
-        //{
-        //    return _conn.QuerySingle<Restaurant>("SELECT * FROM RESTAURANTS WHERE restID = @restID;",
-        //        new { restID = restID });
-        //}
+        public Restaurant GetRestaurant(long restID)
+        {
+            return _conn.QueryFirst<Restaurant>("SELECT * FROM RESTAURANTS WHERE restID = @restID;");
+        }
     }
 }
 

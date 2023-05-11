@@ -5,13 +5,10 @@ using System.Threading.Tasks;
 using LetsEat.Models;
 using Microsoft.AspNetCore.Mvc;
 
-// For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
 namespace LetsEat.Controllers
 {
     public class RestaurantController : Controller
     {
-        // GET: /<controller>/
         private readonly IRestaurantRepo repo;
 
         public RestaurantController(IRestaurantRepo repo)
@@ -39,7 +36,7 @@ namespace LetsEat.Controllers
         }
 
         // no elements in sequence, come back to it
-        //public IActionResult ViewRestaurant(long restID)
+        // public IActionResult ViewRestaurant(long restID)
         //{
         //    var restaurant = new Restaurant();
         //    try
