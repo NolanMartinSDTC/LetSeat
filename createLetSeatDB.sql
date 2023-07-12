@@ -1,7 +1,7 @@
 CREATE SCHEMA `letseat` ;
 
 CREATE TABLE `letseat`.`restaurants` (
-  `restID` INT NOT NULL,
+  `restID` VARCHAR(45) NOT NULL,
   `Name` VARCHAR(45) NULL DEFAULT NULL,
   `CuisineType` VARCHAR(45) NULL DEFAULT NULL,
   `Address` VARCHAR(45) NULL DEFAULT NULL,
@@ -11,7 +11,7 @@ CREATE TABLE `letseat`.`restaurants` (
   UNIQUE INDEX `restID_UNIQUE` (`restID` ASC) VISIBLE);
   
   CREATE TABLE `letseat`.`favorites` (
-  `restID` INT NOT NULL,
+  `restID` VARCHAR(45) NOT NULL,
   `Name` VARCHAR(45) NULL DEFAULT NULL,
   `CuisineType` VARCHAR(45) NULL DEFAULT NULL,
   `Address` VARCHAR(45) NULL DEFAULT NULL,
